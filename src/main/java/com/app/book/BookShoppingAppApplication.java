@@ -10,11 +10,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.app.book.entity.Book;
 import com.app.book.repository.BookRepository;
+import com.app.book.service.BookServiceImpl;
 
 @SpringBootApplication
 public class BookShoppingAppApplication implements CommandLineRunner {
+	public static BookServiceImpl bookServiceImpl=new BookServiceImpl();
 	@Autowired
 	public BookRepository bookRepository;
+	public static List<Book> b=new ArrayList<>();
 
 	public static void main(String[] args) {
 		SpringApplication.run(BookShoppingAppApplication.class, args);
@@ -22,10 +25,15 @@ public class BookShoppingAppApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		List<Book> b = new ArrayList<>();
+		
+		
+		
 		b.add(new Book(1L, "JAVA", "Amitava", 5000));
-		b.add(new Book(2L, "PYTHON", "Arpan", 10000));
+		b.add(new Book(2L, "PYTHON", "Anuska", 10000));
 		bookRepository.saveAll(b);
+		
+		System.out.println(bookServiceImpl.getABook(2));
+		System.out.println(bookServiceImpl.getAllBook());
 		// bookRepository.save(new Book(1L, "JAVA", "Amitava", 5000));
 
 		// TODO Auto-generated method stub
