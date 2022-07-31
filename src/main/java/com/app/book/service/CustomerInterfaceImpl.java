@@ -23,4 +23,12 @@ public class CustomerInterfaceImpl implements CustomerInterface {
 		return customerRepository.save(customer);
 	}
 
+	@Override
+	public Customer updateCustomerById(Long id, Customer customer) {
+		Customer _customer=customerRepository.findById(id).orElse(null);
+		if(_customer!=null)
+			return customerRepository.save(customer);
+		return null;
+	}
+
 }

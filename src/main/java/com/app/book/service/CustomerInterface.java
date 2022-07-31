@@ -8,5 +8,7 @@ public interface CustomerInterface {
 	public List<Customer> getAllCustomers();
 
 	public Customer saveCustomers(Customer customer);
+    public Customer updateCustomerById(Long id, Customer customer);
+    
 
 }
