@@ -24,6 +24,14 @@ public class BookServiceImpl implements BookService {
 			throw new RuntimeException("Book not found");
 		}
 		return book;
+
+	@Override
+	public Book updateBookById(Long id, Book book)
+	{
+		Book book2=bookRepository.findById(id).orElse(null);
+		if(book2!=null)
+			return bookRepository.save(book);
+		return null;
 	}
     
     @Override
@@ -43,6 +51,5 @@ public class BookServiceImpl implements BookService {
 		bookRepository.delete(book);
 		
 	}
-	
 
 }
