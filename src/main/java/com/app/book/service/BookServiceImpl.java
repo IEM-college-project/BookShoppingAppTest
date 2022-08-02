@@ -13,7 +13,6 @@ public class BookServiceImpl implements BookService {
     @Autowired
 	private BookRepository bookRepository;
     
-    
     @Override
 	public Book getABook(long id) {
 		Optional<Book> optional = bookRepository.findById(id);
@@ -24,13 +23,18 @@ public class BookServiceImpl implements BookService {
 			throw new RuntimeException("Book not found");
 		}
 		return book;
+    }
 
 	@Override
 	public Book updateBookById(Long id, Book book)
 	{
 		Book book2=bookRepository.findById(id).orElse(null);
-		if(book2!=null)
-			return bookRepository.save(book);
+		if(book2!=null) {
+			book2.setName(book.getName());
+			book2.setAuthor(book.getAuthor());
+			book2.setPrice(book.getPrice());
+			return bookRepository.save(book2);
+		}
 		return null;
 	}
     
@@ -42,14 +46,12 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public Book saveBook(Book book) {
 		return bookRepository.save(book);
-		
 	}
 
 	@Override
 	public void deleteABook(long id) {
 		Book book = getABook(id);
 		bookRepository.delete(book);
-		
 	}
 
 }
