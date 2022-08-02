@@ -8,9 +8,11 @@ import com.app.book.entity.Book;
 
 @Service
 public interface BookService {
-	// public void addABook();
 
 	public Book getABook(long id);
-	public List<Book> getAllBook();
+	public List<Book> getAllBooks();
+	Book saveBook(Book book);
+	void deleteABook(long id);
 
 }
+

@@ -1,37 +1,47 @@
 package com.app.book.service;
 
-import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.app.book.BookShoppingAppApplication;
 import com.app.book.entity.Book;
+import com.app.book.repository.BookRepository;
 
 @Service
 public class BookServiceImpl implements BookService {
 	
-
-	@Override
+    @Autowired
+	private BookRepository bookRepository;
+    
+    
+    @Override
 	public Book getABook(long id) {
-		Book book=null;
-		List<Book> allBooks=BookShoppingAppApplication.b;
-		
-		for (Book e : allBooks) {
-			if (e.getId() == id) {
-				book = e;
-				break;
-			}
+		Optional<Book> optional = bookRepository.findById(id);
+		Book book = null;
+		if(optional.isPresent()) {
+			book = optional.get();
+		}else {
+			throw new RuntimeException("Book not found");
 		}
-		// TODO Auto-generated method stub
 		return book;
+	}
+    
+    @Override
+	public List<Book> getAllBooks() {
+		return bookRepository.findAll();
 	}
 
 	@Override
-	public List<Book> getAllBook() {
-		 List<Book> allBooks=BookShoppingAppApplication.b;
-		// TODO Auto-generated method stub
-		return allBooks;
+	public Book saveBook(Book book) {
+		return bookRepository.save(book);
+		
+	}
+
+	@Override
+	public void deleteABook(long id) {
+		Book book = getABook(id);
+		bookRepository.delete(book);
+		
 	}
 	
 
