@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "mybooks")
 public class Book {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "book_id")
@@ -28,9 +29,9 @@ public class Book {
 	private String author;
 	@Column(name = "book_price", length = 6)
 	private long price;
+	
 	public Book() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Book(long id, String name, String author, long price) {
 		super();
@@ -67,7 +68,5 @@ public class Book {
 	public String toString() {
 		return "Book [id=" + id + ", name=" + name + ", author=" + author + ", price=" + price + "]";
 	}
-	
-	
 
 }
