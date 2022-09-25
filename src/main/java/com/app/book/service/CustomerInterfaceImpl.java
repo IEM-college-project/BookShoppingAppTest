@@ -25,10 +25,28 @@ public class CustomerInterfaceImpl implements CustomerInterface {
 
 	@Override
 	public Customer updateCustomerById(Long id, Customer customer) {
-		Customer _customer=customerRepository.findById(id).orElse(null);
-		if(_customer!=null)
+		Customer _customer = customerRepository.findById(id).orElse(null);
+		if (_customer != null)
 			return customerRepository.save(customer);
 		return null;
+	}
+
+	@Override
+	public Customer getACustomerById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Customer registerCustomers(Customer customer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteCustomerbyId(Long id) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

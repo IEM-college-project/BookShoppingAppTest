@@ -12,14 +12,18 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-//@AllArgsConstructor
-//@NoArgsConstructor
-//@Data
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 
 @Entity
-@Table(name = "myorder")
+@Table(name = "Orders")
 public class Order {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "order_id", length = 20)

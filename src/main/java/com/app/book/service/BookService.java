@@ -10,10 +10,13 @@ import com.app.book.entity.Book;
 public interface BookService {
 
 	public Book getABook(long id);
+
 	public List<Book> getAllBooks();
-	Book saveBook(Book book);
-	void deleteABook(long id);
-	Book updateBookById(Long id, Book book);
+
+	public Book createBook(Book book);
+
+	public void deleteABook(long id);
+
+	public Book updateBookById(Long id, Book book);
 
 }
-

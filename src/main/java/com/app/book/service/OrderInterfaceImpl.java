@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.app.book.entity.Customer;
 import com.app.book.entity.Order;
 import com.app.book.repository.OrderRepository;
 
@@ -24,9 +23,10 @@ public class OrderInterfaceImpl implements OrderInterface {
 		return orderRepository.save(order);
 
 	}
+
 	public Order updateOrderById(Long id, Order order) {
-		Order order2=orderRepository.findById(id).orElse(null);
-		if(order2!=null)
+		Order order2 = orderRepository.findById(id).orElse(null);
+		if (order2 != null)
 			return orderRepository.save(order);
 		return null;
 	}
